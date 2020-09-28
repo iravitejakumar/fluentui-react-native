@@ -15,7 +15,7 @@
     "react-native": "0.62.2",
     "react-native-web": "^0.12.3",
     "typescript": "3.8.3",
-    "webpack": "^4.42.0"
+    "webpack": "^4.43.0"
   },
   "scripts": {
     "web": "start http://localhost:8080/ & webpack-dev-server",

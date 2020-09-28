@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Separator } from '@fluentui/react-native';
 import { Stack } from '@fluentui-react-native/stack';
 import { stackStyle } from './Common/styles';
-import { app } from '../FabricTester';
+import { app } from '../FluentTester';
 
 export type TestSection = {
   name: string;

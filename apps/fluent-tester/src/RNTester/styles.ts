@@ -18,7 +18,7 @@ export const commonTestStyles = StyleSheet.create({
   },
 });
 
-export const fabricTesterStyles = StyleSheet.create({
+export const fluentTesterStyles = StyleSheet.create({
   root: {
     flex: 1,
     flexGrow: 1,

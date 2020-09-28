@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Picker, ScrollView, View, Text } from 'react-native';
 import { TestDescription } from './TestComponents';
 import { BASE_TESTPAGE } from './TestComponents/Common/consts';
-import { fabricTesterStyles } from './TestComponents/Common/styles';
+import { fluentTesterStyles } from './TestComponents/Common/styles';
 import { registerThemes } from './TestComponents/Theme/CustomThemes';
 
 // uncomment the below lines to enable message spy
@@ -16,10 +16,10 @@ MessageQueue.spy(true);
 registerThemes();
 
 const EmptyComponent: React.FunctionComponent = () => {
-  return <Text style={fabricTesterStyles.noTest}>Select a component from the left.</Text>;
+  return <Text style={fluentTesterStyles.noTest}>Select a component from the left.</Text>;
 };
 
-export interface IFabricTesterProps {
+export interface IFluentTesterProps {
   initialTest?: string;
   enabledTests: TestDescription[];
 }
@@ -51,17 +51,17 @@ const Header: React.FunctionComponent<{}> = () => {
   }, []);
 
   return (
-    <View style={fabricTesterStyles.header}>
-      <Text style={[fabricTesterStyles.testHeader, themeColor()]} testID={BASE_TESTPAGE}>
+    <View style={fluentTesterStyles.header}>
+      <Text style={[fluentTesterStyles.testHeader, themeColor()]} testID={BASE_TESTPAGE}>
         ⚛ FluentUI Tests
       </Text>
 
-      <View style={fabricTesterStyles.pickerRoot}>
-        <View style={fabricTesterStyles.picker}>
-          <Text style={fabricTesterStyles.pickerLabel}>Platform:  </Text>
+      <View style={fluentTesterStyles.pickerRoot}>
+        <View style={fluentTesterStyles.picker}>
+          <Text style={fluentTesterStyles.pickerLabel}>Platform:  </Text>
           <Picker
             selectedValue={selectedPlatform}
-            style={fabricTesterStyles.dropdown}
+            style={fluentTesterStyles.dropdown}
             onValueChange={(platformValue) => setSelectedPlatform(platformValue)}
           >
             <Picker.Item label="Win32" value="win32" />
@@ -72,11 +72,11 @@ const Header: React.FunctionComponent<{}> = () => {
           </Picker>
         </View>
 
-        <View style={fabricTesterStyles.picker}>
-          <Text style={fabricTesterStyles.pickerLabel}>App:  </Text>
+        <View style={fluentTesterStyles.picker}>
+          <Text style={fluentTesterStyles.pickerLabel}>App:  </Text>
           <Picker
             selectedValue={selectedApp}
-            style={fabricTesterStyles.dropdown}
+            style={fluentTesterStyles.dropdown}
             onValueChange={(appValue) => onAppChange(appValue)}
           >
             <Picker.Item label="Office" value="office" />
@@ -87,11 +87,11 @@ const Header: React.FunctionComponent<{}> = () => {
           </Picker>
         </View>
 
-        <View style={fabricTesterStyles.picker}>
-          <Text style={fabricTesterStyles.pickerLabel}>Theme:  </Text>
+        <View style={fluentTesterStyles.picker}>
+          <Text style={fluentTesterStyles.pickerLabel}>Theme:  </Text>
           <Picker
             selectedValue={selectedTheme}
-            style={fabricTesterStyles.dropdown}
+            style={fluentTesterStyles.dropdown}
             onValueChange={(themeValue) => setSelectedTheme(themeValue)}
           >
             <Picker.Item label="Default" value="default" />
@@ -104,7 +104,7 @@ const Header: React.FunctionComponent<{}> = () => {
   );
 }
 
-export const FabricTester: React.FunctionComponent<IFabricTesterProps> = (props: IFabricTesterProps) => {
+export const FluentTester: React.FunctionComponent<IFluentTesterProps> = (props: IFluentTesterProps) => {
   // sort tests alphabetically by name
   const sortedTestComponents = props.enabledTests.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -125,13 +125,13 @@ export const FabricTester: React.FunctionComponent<IFabricTesterProps> = (props:
   });
 
   return (
-    <View style={fabricTesterStyles.root}>
+    <View style={fluentTesterStyles.root}>
       <Header />
 
       <Separator />
 
-      <View style={fabricTesterStyles.testRoot}>
-        <ScrollView style={fabricTesterStyles.testList} contentContainerStyle={fabricTesterStyles.testListContainerStyle}>
+      <View style={fluentTesterStyles.testRoot}>
+        <ScrollView style={fluentTesterStyles.testList} contentContainerStyle={fluentTesterStyles.testListContainerStyle}>
           {sortedTestComponents.map((description, index) => {
             return (
               <StealthButton
@@ -139,7 +139,7 @@ export const FabricTester: React.FunctionComponent<IFabricTesterProps> = (props:
                 disabled={index == selectedTestIndex}
                 content={description.name}
                 onClick={() => setSelectedTestIndex(index)}
-                style={fabricTesterStyles.testListItem}
+                style={fluentTesterStyles.testListItem}
                 testID={description.testPage}
               />
             );
@@ -148,7 +148,7 @@ export const FabricTester: React.FunctionComponent<IFabricTesterProps> = (props:
 
         <TestListSeparator vertical style={{ marginHorizontal: 8, width: 2 }} />
 
-        <View style={fabricTesterStyles.testSection}>
+        <View style={fluentTesterStyles.testSection}>
           <ScrollView>
             <TestComponent />
           </ScrollView>
